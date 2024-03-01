@@ -40,10 +40,10 @@ export const Slot = () => {
       num: 1,
     };
 
-    let arrOne: Array<string> = [];
+    let arrOne: string[] = [];
     let arrTwo: Array<string> = [];
     let arrThree: Array<string> = [];
-    const emojiArr: Array<string> = ["🍒", "⭐", "🎉"];
+    const emojiArr: string[] = ["🍒", "⭐", "🎉"];
 
     const animateText = anime({
       targets: textObj,
