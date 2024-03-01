@@ -43,7 +43,7 @@ export const Slot = () => {
     let arrOne: string[] = [];
     let arrTwo: Array<string> = [];
     let arrThree: Array<string> = [];
-    const emojiArr: string[] = ["🍒", "⭐", "🎉"];
+    const emojiArr: string[] = ["🍒", "💥", "🎉"];
 
     const animateText = anime({
       targets: textObj,
