@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from "react";
 import anime from "animejs/lib/anime.es.js";
 import { styled } from "styled-components";
+import { AnimeCallBack } from "animejs";
 
 const Wrapper = styled.div`
   width: 300px;
@@ -20,9 +21,9 @@ export const Slot = () => {
   useEffect(() => {
     //this point svg has already loaded when using useEffect
     const svg = document.querySelector("svg");
-    const one = document.querySelector(".one");
-    const two = document.querySelector(".two");
-    const three = document.querySelector(".three");
+    const one: SVGTextElement | null = document.querySelector(".one");
+    const two: SVGTextElement | null = document.querySelector(".two");
+    const three: SVGTextElement | null = document.querySelector(".three");
 
     const animation = anime({
       targets: svg,
@@ -32,14 +33,17 @@ export const Slot = () => {
       easing: "spring(1, 100, 10, 0)",
     });
 
-    let textObj = {
+    interface TextObj {
+      num: number;
+    }
+    const textObj: TextObj = {
       num: 1,
     };
 
-    let arrOne = [];
-    let arrTwo = [];
-    let arrThree = [];
-    let emojiArr = ["🍒", "⭐", "🎉"];
+    let arrOne: Array<string> = [];
+    let arrTwo: Array<string> = [];
+    let arrThree: Array<string> = [];
+    const emojiArr: Array<string> = ["🍒", "⭐", "🎉"];
 
     const animateText = anime({
       targets: textObj,
@@ -47,16 +51,16 @@ export const Slot = () => {
       easing: "easeInOutCirc",
       duration: 10000,
       autoplay: false,
-      update: function (anim) {
-        two.innerHTML = emojiArr[arrOne[textObj.num]];
-        three.innerHTML = emojiArr[arrTwo[textObj.num]];
-        one.innerHTML = emojiArr[arrThree[textObj.num]];
+      update: function (anim: AnimeCallBack) {
+        two!.innerHTML = emojiArr[arrOne[textObj.num]];
+        three!.innerHTML = emojiArr[arrTwo[textObj.num]];
+        one!.innerHTML = emojiArr[arrThree[textObj.num]];
       },
       begin: function () {
         for (let i = 0; i <= 100; i++) {
-          arrOne.push(Math.floor(Math.random() * 3));
-          arrTwo.push(Math.floor(Math.random() * 3));
-          arrThree.push(Math.floor(Math.random() * 3));
+          arrOne.push(Math.floor(Math.random() * 3).toString());
+          arrTwo.push(Math.floor(Math.random() * 3).toString());
+          arrThree.push(Math.floor(Math.random() * 3).toString());
         }
       },
       complete: function () {
@@ -68,18 +72,16 @@ export const Slot = () => {
     });
 
     const handleClick = () => {
-      console.log(animation.play);
       animation.play();
       animateText.play();
     };
 
-    svg.addEventListener("click", handleClick);
+    svg!.addEventListener("click", handleClick);
   }, []);
 
   return (
     <Wrapper>
       <svg
-        ref={svgRef}
         className="slots"
         width="100%"
         height="100%"
@@ -185,7 +187,6 @@ export const Slot = () => {
           <path d="M70.17 74.52c.3-8.71-1.83-14.6-2.95-17.06l-19.89.03c-1.22 2.91-3.4 9.21-3.22 16.87c.19 8.35 2.38 14.95 3.29 17.36l20.51-.08c.69-2.68 1.96-8.65 2.26-17.12z"></path>
 
           <text
-            ref={textRef}
             className="three"
             fill="black"
             x="45%"
