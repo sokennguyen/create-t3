@@ -10,6 +10,7 @@ const inter = Inter({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://pull.nskien.xyz"),
   title: "Harmless Pull",
   description: "Quickly test your luck",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
