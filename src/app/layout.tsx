@@ -11,9 +11,12 @@ const inter = Inter({
 
 export const metadata = {
   metadataBase: new URL("https://pull.nskien.xyz"),
-  title: "Harmless Pull",
-  description: "Quickly test your luck",
+  title: "HarmlessPull: Luck test with a Slot Machine",
+  description:
+    "Quickly test your luck for free with a slot machine. Without the money part of the slot machines, you can use the concept of it to test your luck in a non-addictive way. Use HarmlessPull when you need to make a quick decision, or to raise odds for a challenge",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+  keywords: ["Slot", "Free", "Luck"],
+  creator: "Kien Nguyen",
 };
 
 export default function RootLayout({
